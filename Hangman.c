@@ -4,14 +4,14 @@
 #include <string.h>
 #include <ctype.h>  // For tolower()
 // Function to clear the console
-/*void clearScreen() {
+void clearScreen() {
     #ifdef _WIN32
         system("cls");
     #else
         system("clear");
     #endif
 }
-*/
+
 // Function to draw the hangman figure with more detail
 void drawHangman(int lives) {
     printf(" +---+\n");
@@ -47,7 +47,6 @@ void drawHangman(int lives) {
 }
 
 int main() {
-	int i;
     // Movie titles with hints
     char movieTitles[][50] = {
         "The last of us", "The Godfather", "The Dark Knight", "12 Angry Men", 
@@ -58,7 +57,7 @@ int main() {
     // Mobile games with hints
     char mobileGames[][50] = {
         "Clash of Clans", "PUBG Mobile", "Candy Crush", "Genshin Impact", 
-        "Call of Duty Mobile", "Among Us", "PokÃ©mon Go", "Brawl Stars", 
+        "Call of Duty Mobile", "Among Us", "Pokémon Go", "Brawl Stars", 
         "Subway Surfers", "Minecraft Pocket Edition"
     };
     
@@ -149,7 +148,7 @@ int main() {
     char displayedWord[50];
 
     // Initialize the displayedWord with underscores and spaces
-    for (i = 0; i < wordLength; i++) {
+    for (int i = 0; i < wordLength; i++) {
         if (selectedCategory[randomIndex][i] == ' ') {
             displayedWord[i] = ' ';
         } else {
@@ -159,17 +158,18 @@ int main() {
     displayedWord[wordLength] = '\0';  // Null-terminate the string
 
     printf("Start guessing!\n");
+
     while (lives > 0) {
         drawHangman(lives);
         printf("\nWord: ");
-        for (i = 0; i < wordLength; i++) {
+        for (int i = 0; i < wordLength; i++) {
             printf("%c ", displayedWord[i]);  // Show the current state of the word
         }
 
         // Display incorrect guesses
         if (incorrectGuessCount > 0) {
             printf("\nIncorrect guesses: ");
-            for ( i = 0; i < incorrectGuessCount; i++) {
+            for (int i = 0; i < incorrectGuessCount; i++) {
                 printf("%c ", incorrectGuesses[i]);
             }
         }
@@ -187,7 +187,7 @@ int main() {
         guess[0] = tolower(guess[0]);
 
         int correctGuess = 0;
-        for (i = 0; i < wordLength; i++) {
+        for (int i = 0; i < wordLength; i++) {
             // Convert both the character in the word and the guess to lowercase for case-insensitive comparison
             if (tolower(selectedCategory[randomIndex][i]) == guess[0]) {
                 displayedWord[i] = selectedCategory[randomIndex][i];  // Update the displayedWord with the correct guess
