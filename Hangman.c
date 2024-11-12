@@ -4,6 +4,8 @@
 #include <string.h>
 #include <ctype.h>  // For tolower()
 // Function to clear the console
+// I am the only one writting this code.
+// they are useless a burden.
 void clearScreen() {
     #ifdef _WIN32
         system("cls");
